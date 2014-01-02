@@ -20,6 +20,7 @@ function widget_register() {
         'public'            => true,
         'show_in_nav_menus' => true,
         'show_ui'           => true,
+        'menu_icon'         => 'dashicons-star-filled', // Dashicons CSS class name - http://melchoyce.github.io/dashicons/
         'menu_position'     => 10,
         'supports'          => array( 'title', 'editor' ),
         'has_archive'       => true,
