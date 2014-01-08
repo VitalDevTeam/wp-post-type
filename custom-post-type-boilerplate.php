@@ -117,24 +117,3 @@ function types_init() {
 
 }
 add_action( 'init', 'types_init' );
-
-
-/*  --------------------------------------------------
-     ADMIN MENU ICON
-    -------------------------------------------------- */
-
-function widget_icon() {
-    $icon_url = plugins_url( 'foo.png' , __FILE__ );
-    ?>
-    <style type="text/css" media="screen">
-        #menu-posts-widget .wp-menu-image {
-            background: url('<?php echo $icon_url ?>') no-repeat 6px -17px !important;
-        }
-        #menu-posts-widget:hover .wp-menu-image,
-        #menu-posts-widget.wp-has-current-submenu .wp-menu-image,
-        .menu-icon-widget.current .wp-menu-image {
-            background-position: 6px 7px!important;
-        }
-    </style>
-<?php }
-add_action( 'admin_head', 'widget_icon' );
