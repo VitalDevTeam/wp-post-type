@@ -1,11 +1,11 @@
 <?php
 /*
     Plugin Name: Custom Post Type (Description)
-    Plugin URI: http://adamwalter.com
+    Plugin URI: https://github.com/VitalDevTeam/custom-post-type-boilerplate
     Description: A custom post type for _____
     Version: 1.0
-    Author: Adam Walter
-    Author URI: http://adamwalter.com
+    Author: Vital Dev Team
+    Author URI: http://vtldesign.com
     License: GPL2
 */
 
