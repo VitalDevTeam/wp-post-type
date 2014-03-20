@@ -11,3 +11,7 @@ A boilerplate for a WordPress custom post type. Registers type, messages, and ta
 3. Replace "widget" throughout the boilerplate code with your new post type
 4. Delete the taxonomy code if you don't require taxonomy
 4. Add folder to the WordPress plugins folder and activate!
+
+### Optional
+
+Edit the `menu_icon` value to change the icon shown in the backend. [Check it out…](https://github.com/VitalDevTeam/custom-post-type-boilerplate/blob/master/custom-post-type-boilerplate.php#L23)
