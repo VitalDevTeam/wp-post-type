@@ -1,6 +1,6 @@
 <?php
 /*
-    Plugin Name: Custom Post Type (Description)
+    Plugin Name: Post Type (Description)
     Plugin URI: https://github.com/VitalDevTeam/custom-post-type-boilerplate
     Description: A custom post type for _____
     Version: 1.0
