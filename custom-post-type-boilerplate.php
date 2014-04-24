@@ -9,11 +9,6 @@
     License: GPL2
 */
 
-
-/*  --------------------------------------------------
-     REGISTER
-    -------------------------------------------------- */
-
 function widget_register() {
     register_post_type( 'widget', array(
         'hierarchical'      => false,
@@ -46,9 +41,9 @@ function widget_register() {
 add_action( 'init', 'widget_register' );
 
 
-/*  --------------------------------------------------
+/*  ==========================================================================
      INTERACTION MESSAGES
-    -------------------------------------------------- */
+    ==========================================================================  */
 
 function widget_updated_messages( $messages ) {
     global $post;
@@ -77,13 +72,13 @@ function widget_updated_messages( $messages ) {
 add_filter( 'post_updated_messages', 'widget_updated_messages' );
 
 
-/*  --------------------------------------------------
+/*  ==========================================================================
      TAXONOMY
-    -------------------------------------------------- */
+    ==========================================================================  */
 
 function types_init() {
     register_taxonomy( 'types', array( 'widget' ), array(
-        'hierarchical'      => false,
+        'hierarchical'      => true,
         'public'            => true,
         'show_in_nav_menus' => true,
         'show_ui'           => true,
