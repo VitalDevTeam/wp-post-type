@@ -15,36 +15,37 @@
 
     function widget_init() {
         $labels = array(
-            'name'               => 'Widgets', 'post type general name',
-            'singular_name'      => 'Widget', 'post type singular name',
-            'menu_name'          => 'Widgets', 'admin menu',
-            'name_admin_bar'     => 'Widget', 'add new on admin bar',
-            'add_new'            => 'Add New', 'Widget',
-            'add_new_item'       => 'Add New Widget',
-            'new_item'           => 'New Widget',
-            'edit_item'          => 'Edit Widget',
-            'view_item'          => 'View Widget',
-            'all_items'          => 'All Widgets',
-            'search_items'       => 'Search Widgets',
-            'parent_item_colon'  => 'Parent Widgets:',
-            'not_found'          => 'No Widget found.',
-            'not_found_in_trash' => 'No Widget found in Trash.'
+            'name'                => 'Widgets', 'post type general name',
+            'singular_name'       => 'Widget', 'post type singular name',
+            'menu_name'           => 'Widgets', 'admin menu',
+            'name_admin_bar'      => 'Widget', 'add new on admin bar',
+            'add_new'             => 'Add New', 'Widget',
+            'add_new_item'        => 'Add New Widget',
+            'new_item'            => 'New Widget',
+            'edit_item'           => 'Edit Widget',
+            'view_item'           => 'View Widget',
+            'all_items'           => 'All Widgets',
+            'search_items'        => 'Search Widgets',
+            'parent_item_colon'   => 'Parent Widgets:',
+            'not_found'           => 'No Widget found.',
+            'not_found_in_trash'  => 'No Widget found in Trash.'
         );
         $args = array(
-            'labels'             => $labels,
-            'public'             => true,
-            'publicly_queryable' => true,
-            'show_ui'            => true,
-            'menu_icon'          => 'dashicons-star-filled', // Dashicons CSS class name - http://melchoyce.github.io/dashicons/
-            'menu_position'      => 20,
-            'show_in_menu'       => true,
-            'query_var'          => true,
+            'labels'              => $labels,
+            'public'              => true,
+            'publicly_queryable'  => true,
+            'show_ui'             => true,
+            'menu_icon'           => 'dashicons-star-filled', // Dashicons CSS class name - http://melchoyce.github.io/dashicons/
+            'menu_position'       => 20,
+            'show_in_menu'        => true,
+            'query_var'           => true,
             // 'rewrite'            => array( 'slug' => 'widget' ),
-            'capability_type'    => 'post',
-            'has_archive'        => true,
-            'hierarchical'       => false,
-            'menu_position'      => null,
-            'supports'           => array( 'title', 'editor' )
+            'capability_type'     => 'post',
+            'has_archive'         => true,
+            'hierarchical'        => false,
+            'menu_position'       => null,
+            'supports'            => array( 'title', 'editor' ),
+            'exclude_from_search' => false
         );
         register_post_type( 'widget', $args );
     }
