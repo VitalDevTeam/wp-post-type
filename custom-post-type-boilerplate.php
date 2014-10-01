@@ -73,7 +73,7 @@
             9  => sprintf('Widget scheduled for: <strong>%1$s</strong>.', date_i18n( 'M j, Y @ G:i', strtotime( $post->post_date ) )),
             10 => 'Widget draft updated.'
         );
-        if ( $post_type_object->publicly_queryable ) {
+        if ( $post_type_object->publicly_queryable & $post->post_type == 'widget' ) {
             $permalink = get_permalink( $post->ID );
             $view_link = sprintf( ' <a href="%s">%s</a>', esc_url( $permalink ), 'View Widget' );
             $messages[ $post_type ][1] .= $view_link;
