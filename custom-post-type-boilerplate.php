@@ -35,7 +35,7 @@
             'public'              => true,
             'publicly_queryable'  => true,
             'show_ui'             => true,
-            'menu_icon'           => 'dashicons-star-filled', // Dashicons CSS class name - http://melchoyce.github.io/dashicons/
+            'menu_icon'           => 'dashicons-star-filled', // Dashicons CSS class name - https://developer.wordpress.org/resource/dashicons/
             'menu_position'       => 20,
             'show_in_menu'        => true,
             'query_var'           => true,
