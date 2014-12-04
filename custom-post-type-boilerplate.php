@@ -35,15 +35,14 @@
             'public'              => true,
             'publicly_queryable'  => true,
             'show_ui'             => true,
+            'menu_position'       => null,
             'menu_icon'           => 'dashicons-star-filled', // Dashicons CSS class name - https://developer.wordpress.org/resource/dashicons/
-            'menu_position'       => 20,
             'show_in_menu'        => true,
             'query_var'           => true,
             // 'rewrite'            => array( 'slug' => 'widget' ),
             'capability_type'     => 'post',
             'has_archive'         => true,
             'hierarchical'        => false,
-            'menu_position'       => null,
             'supports'            => array( 'title', 'editor' ),
             'exclude_from_search' => false
         );
