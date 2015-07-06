@@ -16,8 +16,6 @@ if (! defined('ABSPATH')) exit;
 class WP_Custom_Post_Type_Boilerplate {
 
 	private static $instance = null;
-	private $plugin_path;
-	private $plugin_url;
 
 	/**
 	 * Creates or returns an instance of this class
