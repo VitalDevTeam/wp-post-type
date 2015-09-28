@@ -35,6 +35,12 @@ function widget_init() {
         'not_found'           => __( 'Not found', 'vital' ),
         'not_found_in_trash'  => __( 'Not found in Trash', 'vital' ),
     );
+    // $rewrite = array(
+    //     'slug'                => 'custom-slug',
+    //     'with_front'          => true,
+    //     'pages'               => true,
+    //     'feeds'               => false,
+    // );
     $args = array(
         'label'               => __( 'widget', 'vital' ),
         'description'         => __( 'Widgets', 'vital' ),
@@ -53,6 +59,7 @@ function widget_init() {
         'has_archive'         => true,
         'exclude_from_search' => false,
         'publicly_queryable'  => true,
+        // 'rewrite'             => $rewrite,
         'capability_type'     => 'post',
     );
 
