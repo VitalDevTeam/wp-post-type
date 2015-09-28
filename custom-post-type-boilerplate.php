@@ -40,6 +40,7 @@ function widget_init() {
         'description'         => __( 'Widgets', 'vital' ),
         'labels'              => $labels,
         'supports'            => array( 'title' ),
+        // 'taxonomies'          => array( 'taxonomy_one', 'taxonomy_two' ),
         'hierarchical'        => false,
         'public'              => true,
         'show_ui'             => true,
