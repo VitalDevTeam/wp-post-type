@@ -61,6 +61,8 @@ function widget_init() {
         'publicly_queryable'  => true,
         // 'rewrite'             => $rewrite,
         'capability_type'     => 'post',
+        // 'capability_type'     => array('vtl_widget','vtl_widgets'),
+        // 'map_meta_cap'        => true,
     );
 
     register_post_type( 'widget', $args );
