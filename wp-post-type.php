@@ -191,7 +191,7 @@ function vtl_widget_hide_date_dropdown($months) {
 function vtl_widget_admin_sort_order($wp_query) {
     if (is_admin() && function_exists('get_current_screen')) {
         $screen = get_current_screen();
-        if ('widget' === $screen->post_type) {
+        if ($screen && 'widget' === $screen->post_type) {
             $wp_query->set('orderby', 'title');
             $wp_query->set('order', 'ASC');
         }
