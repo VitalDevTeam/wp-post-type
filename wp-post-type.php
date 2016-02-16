@@ -189,10 +189,12 @@ function vtl_widget_hide_date_dropdown($months) {
  * Change default sort order in admin
  */
 function vtl_widget_admin_sort_order($wp_query) {
-    $screen = get_current_screen();
-    if ('widget' === $screen->post_type) {
-        $wp_query->set('orderby', 'title');
-        $wp_query->set('order', 'ASC');
+    if (is_admin() && function_exists('get_current_screen')) {
+        $screen = get_current_screen();
+        if ('widget' === $screen->post_type) {
+            $wp_query->set('orderby', 'title');
+            $wp_query->set('order', 'ASC');
+        }
     }
 }
 // add_filter('pre_get_posts', 'vtl_widget_admin_sort_order');
