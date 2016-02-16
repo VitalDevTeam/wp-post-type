@@ -185,6 +185,17 @@ function vtl_widget_hide_date_dropdown($months) {
 }
 // add_filter('months_dropdown_results', 'vtl_widget_hide_date_dropdown');
 
+/**
+ * Change default sort order in admin
+ */
+function vtl_widget_admin_sort_order($wp_query) {
+    $screen = get_current_screen();
+    if ('widget' === $screen->post_type) {
+        $wp_query->set('orderby', 'title');
+        $wp_query->set('order', 'ASC');
+    }
+}
+// add_filter('pre_get_posts', 'vtl_widget_admin_sort_order');
 
 /**
 * Tax CTP Filter Class
