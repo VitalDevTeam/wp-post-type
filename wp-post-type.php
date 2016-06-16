@@ -98,7 +98,7 @@ function vtl_widget_type_init() {
     );
     $rewrite = array(
         'slug'                       => 'widget-type',
-        'with_front'                 => true,
+        'with_front'                 => false,
         'hierarchical'               => false,
     );
     $args = array(
