@@ -39,7 +39,7 @@ function vtl_widget_init() {
     );
     $rewrite = array(
         'slug'                  => 'widget',
-        'with_front'            => true,
+        'with_front'            => false,
         'pages'                 => true,
         'feeds'                 => true,
     );
