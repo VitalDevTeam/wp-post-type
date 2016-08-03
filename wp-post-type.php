@@ -277,4 +277,4 @@ if (!class_exists('Tax_CTP_Filter')) {
         }
     }
 }
-new Tax_CTP_Filter(array('widget' => array('widget_type')));
+// new Tax_CTP_Filter(array('widget' => array('widget_type')));
