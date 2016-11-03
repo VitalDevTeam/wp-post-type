@@ -19,7 +19,8 @@ $widget_options = [
     'show_in_nav_menus'   => true,
     'has_archive'         => false,
     'exclude_from_search' => true,
-    'rewrite'             => array('with_front' => false)
+    'rewrite'             => array('with_front' => false),
+    'labels'              => array('menu_name' => 'Widgets')
 ];
 
 // Create post type
