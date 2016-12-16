@@ -5,11 +5,14 @@ Custom post type class for easy creation. Based on JJGrainer's PHP class: http:/
 ## Installation
 
 1. Download, install, and enable plugin in WordPress
-2. Create a new file for each post type in `/post-types`. These files get auto-loaded by the plugin.
+2. Create a new file for each post type in `post-types` directory.
+3. `require` each post type file in `custom-post-types.php`
+
+_Coming soon: A wp-admin options page that will let you activate/deactivate individual post types without having to manually edit `custom-post-types.php`._
 
 ## How to Use
 
-Look at `example.php` as a reference.
+Look at post types in `post-types` directory as a reference.
 
 ### Post Type Names
 
