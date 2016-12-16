@@ -61,12 +61,8 @@ $widget_type_names = [
 // Define taxonomy options
 $widget_type_options = [
     'heirarchical'      => true,
-    'show_admin_column' => true,
     'show_in_nav_menus' => false
 ];
 
 // Register taxonomy
 $widgets->taxonomy($widget_type_names, $widget_type_options);
-
-// Create admin taxonomy filters
-new Taxonomy_Filter(array('vtl_widget' => array('widget_type')));
