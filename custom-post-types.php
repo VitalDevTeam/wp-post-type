@@ -20,7 +20,8 @@ require plugin_dir_path(__FILE__) . 'inc/class-posttype.php';
 require plugin_dir_path(__FILE__) . 'inc/class-taxonomy.php';
 require plugin_dir_path(__FILE__) . 'inc/class-taxfilter.php';
 
-// Include all post type PHP files
-foreach (glob(plugin_dir_path(__FILE__) . 'post-types/*.php') as $filename) {
-    include $filename;
-}
+// Include post type(s)
+// @TODO: Add options page in wp-admin so each post type can
+//        be activated/deactivated easily
+
+// require plugin_dir_path(__FILE__) . 'post-types/your-post-type.php';
