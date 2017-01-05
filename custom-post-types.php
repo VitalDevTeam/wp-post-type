@@ -14,11 +14,20 @@
 
 defined('ABSPATH') or die('Do not access this file directly.');
 
-// Include classes
 require plugin_dir_path(__FILE__) . 'inc/class-columns.php';
 require plugin_dir_path(__FILE__) . 'inc/class-posttype.php';
 require plugin_dir_path(__FILE__) . 'inc/class-taxonomy.php';
 require plugin_dir_path(__FILE__) . 'inc/class-taxfilter.php';
+
+/**
+ * Plugin activation tasks
+ */
+function vtl_cpt_activate() {
+    // Flush rewrites
+	flush_rewrite_rules();
+}
+
+register_activation_hook(__FILE__, 'vtl_cpt_activate');
 
 // Include post type(s)
 // @TODO: Add options page in wp-admin so each post type can
