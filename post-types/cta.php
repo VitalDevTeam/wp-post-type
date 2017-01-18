@@ -51,7 +51,8 @@ $cta_style_names = [
 // Define taxonomy options
 $cta_style_options = [
     'heirarchical'      => true,
-    'show_in_nav_menus' => false
+    'show_in_nav_menus' => false,
+    'labels'            => array('menu_name' => 'Styles')
 ];
 
 // Register taxonomy
