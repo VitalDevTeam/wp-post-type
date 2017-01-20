@@ -8,7 +8,6 @@
  *
  */
 
-// Define our post type names
 $cta_names = [
     'name'     => 'vtl_cta',
     'singular' => 'CTA',
@@ -16,7 +15,6 @@ $cta_names = [
     'slug'     => 'cta'
 ];
 
-// Define our options
 $cta_options = [
     'exclude_from_search' => true,
     'has_archive'         => false,
@@ -25,22 +23,16 @@ $cta_options = [
     'publicly_queryable'  => false,
     'rewrite'             => array('with_front' => false),
     'show_in_nav_menus'   => false,
+    'show_in_rest'        => false,
     'supports'            => array('title')
 ];
 
-// Create post type
 $cta = new PostType($cta_names, $cta_options);
 
-// Set the menu icon
 $cta->icon('dashicons-welcome-widgets-menus');
-
-// Set the title placeholder text
 $cta->placeholder('Enter description');
-
-// Hide admin columns
 $cta->columns()->hide(['date', 'wpseo-score', 'wpseo-score-readability']);
 
-// Define taxonomy names
 $cta_style_names = [
     'name'     => 'cta_style',
     'singular' => 'CTA Style',
@@ -48,17 +40,17 @@ $cta_style_names = [
     'slug'     => 'cta-style'
 ];
 
-// Define taxonomy options
 $cta_style_options = [
     'heirarchical'      => true,
     'show_in_nav_menus' => false,
     'labels'            => array('menu_name' => 'Styles')
 ];
 
-// Register taxonomy
 $cta->taxonomy($cta_style_names, $cta_style_options);
 
-// Disable the taxonomy archive pages
+/**
+ * Disable the taxonomy archive pages
+ */
 function disable_cta_style_archive($query) {
     if (is_admin()) return;
     if (is_tax('cta_style')) {
