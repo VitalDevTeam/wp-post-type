@@ -41,17 +41,17 @@ $widget->placeholder('Enter widget name');
 $widget->columns()->hide(['date', 'wpseo-score', 'wpseo-score-readability']);
 
 // Add custom admin columns
-$widgets->columns()->add([
+$widget->columns()->add([
     'widget_color' => 'Color'
 ]);
 
 // Populate custom admin columns
-$widgets->columns()->populate('widget_color', function($column, $post_id) {
+$widget->columns()->populate('widget_color', function($column, $post_id) {
     echo get_post_meta($post_id, 'widget_color');
 });
 
 // Make custom admin columns sortable
-$widgets->columns()->sortable([
+$widget->columns()->sortable([
     'widget_color' => ['widget_color', true]
 ]);
 
