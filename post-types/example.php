@@ -16,7 +16,6 @@ $widget_options = [
     'exclude_from_search' => false,
     'has_archive'         => false,
     'hierarchical'        => false,
-    'menu_icon'           => 'dashicons-star-filled',
     'menu_position'       => 20,
     'has_archive'         => true,
     'rewrite'             => array('with_front' => false),
