@@ -12,7 +12,7 @@ _Coming soon: A wp-admin options page that will let you activate/deactivate indi
 
 ## How to Use
 
-Look at post types in `post-types` directory as a reference.
+Check out `post-types/example.php` for an example.
 
 ### Post Type Names
 
