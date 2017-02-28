@@ -616,7 +616,7 @@ class PostType
     public function loadEdit()
     {
         // Run filter to sort columns when requested
-        add_filter('request', [&$this, 'sortColumns']);
+        add_filter('request', [$this, 'sortColumns']);
     }
 
     /**
@@ -625,7 +625,7 @@ class PostType
      * @param array $vars the request query vars
      * @return array the request query vars
      */
-    public function sortColumns($vars)
+    public function sortColumns(&$vars)
     {
         // cycle through all sortable columns submitted by the user
         foreach ($this->columns()->sortable as $column => $values) {
