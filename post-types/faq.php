@@ -11,7 +11,6 @@ $faq_names = [
 ];
 
 $faq_options = [
-    'exclude_from_search' => true,
     'has_archive'         => true,
     'hierarchical'        => false,
     'labels'              => array('menu_name' => 'FAQs'),

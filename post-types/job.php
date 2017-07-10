@@ -11,7 +11,6 @@ $job_names = [
 ];
 
 $job_options = [
-    'exclude_from_search' => true,
     'has_archive'         => false,
     'hierarchical'        => false,
     'labels'              => array('menu_name' => 'Careers'),
