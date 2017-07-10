@@ -625,7 +625,7 @@ class PostType
      * @param array $vars the request query vars
      * @return array the request query vars
      */
-    public function sortColumns(&$vars)
+    public function sortColumns($vars)
     {
         // cycle through all sortable columns submitted by the user
         foreach ($this->columns()->sortable as $column => $values) {
