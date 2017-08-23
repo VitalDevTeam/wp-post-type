@@ -329,7 +329,11 @@ class PostType
         add_filter('bulk_post_updated_messages', array(&$this, 'modifyBulkUpdateMessages'), 10, 2);
 
         // customize title placeholder text
-        add_filter('enter_title_here', array(&$this, 'titlePlaceholder'));
+        if (isset($_GET['post_type']) && $_GET['post_type'] === $this->postTypeName) {
+	        add_filter('enter_title_here', function(){
+				return $this->placeholder;
+			});
+		}
     }
 
     /**
@@ -721,18 +725,6 @@ class PostType
         ];
 
         return $bulk_messages;
-    }
-
-    /**
-     * Set the title placeholder text
-     */
-    public function titlePlaceholder($title)
-    {
-        $screen = get_current_screen();
-        if ($screen && $screen->post_type === $this->postTypeName) {
-            return $this->placeholder;
-        }
-
     }
 
 }
