@@ -330,10 +330,11 @@ class PostType
 
         // customize title placeholder text
         if (isset($_GET['post_type']) && $_GET['post_type'] === $this->postTypeName) {
-	        add_filter('enter_title_here', function(){
+			add_filter('enter_title_here', function(){
 				return $this->placeholder;
 			});
 		}
+		
     }
 
     /**
