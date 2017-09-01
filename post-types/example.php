@@ -14,7 +14,6 @@ $widget_names = [
 // Define our options
 $widget_options = [
     'exclude_from_search' => false,
-    'has_archive'         => false,
     'hierarchical'        => false,
     'menu_position'       => 20,
     'has_archive'         => true,
