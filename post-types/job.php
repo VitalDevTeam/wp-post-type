@@ -7,6 +7,7 @@ $job_names = [
     'name'     => 'vtl_job',
     'singular' => 'Job',
     'plural'   => 'Jobs',
+	'all_items' => 'All Jobs',
     'slug'     => 'careers'
 ];
 

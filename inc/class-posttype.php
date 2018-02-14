@@ -42,6 +42,20 @@ class PostType
     public $slug;
 
     /**
+     * The post type string for admin menu.
+     *
+     * @var string
+     */
+    public $menu_name;
+
+    /**
+     * The post type string for the submenu.
+     *
+     * @var string
+     */
+    public $all_items;
+
+    /**
      * The options passed for the post type.
      *
      * @var array
@@ -139,6 +153,8 @@ class PostType
             // 'name',
             'singular',
             'plural',
+            'all_items',
+			'menu_name',
             'slug',
         ];
 
@@ -183,16 +199,16 @@ class PostType
         $labels = [
             'name' => sprintf(__('%s', $this->textdomain), $this->plural),
             'singular_name' => sprintf(__('%s', $this->textdomain), $this->singular),
-            'menu_name' => sprintf(__('%s', $this->textdomain), $this->plural),
-            'all_items' => sprintf(__('%s', $this->textdomain), $this->plural),
+            'menu_name' => sprintf(__('%s', $this->textdomain), $this->menu_name),
+            'all_items' => sprintf(__('%s', $this->textdomain), $this->all_items),
             'add_new' => __('Add New', $this->textdomain),
             'add_new_item' => sprintf(__('Add New %s', $this->textdomain), $this->singular),
             'edit_item' => sprintf(__('Edit %s', $this->textdomain), $this->singular),
             'new_item' => sprintf(__('New %s', $this->textdomain), $this->singular),
             'view_item' => sprintf(__('View %s', $this->textdomain), $this->singular),
             'search_items' => sprintf(__('Search %s', $this->textdomain), $this->plural),
-            'not_found' => sprintf(__('No %s found', $this->textdomain), $this->plural),
-            'not_found_in_trash' => sprintf(__('No %s found in Trash', $this->textdomain), $this->plural),
+            'not_found' => sprintf(__('No %s found', $this->textdomain), strtolower($this->plural)),
+            'not_found_in_trash' => sprintf(__('No %s found in Trash', $this->textdomain), strtolower($this->plural)),
             'parent_item_colon' => sprintf(__('Parent %s:', $this->textdomain), $this->singular),
         ];
 

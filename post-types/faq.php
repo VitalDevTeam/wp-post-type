@@ -5,8 +5,10 @@
 
 $faq_names = [
     'name'     => 'vtl_faq',
+	'menu_name' => 'FAQs',
     'singular' => 'Question',
     'plural'   => 'Questions',
+	'all_items' => 'All Questions',
     'slug'     => 'faq'
 ];
 

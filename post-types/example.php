@@ -6,8 +6,10 @@
  // Define our post type names
 $widget_names = [
     'name' => 'vtl_widget',
+	'menu_name' => 'Widgets',
     'singular' => 'Widget',
     'plural' => 'Widgets',
+	'all_items' => 'All Widgets',
     'slug' => 'widget'
 ];
 
@@ -72,4 +74,3 @@ $widget_type_options = [
 
 // Register taxonomy
 $widget->taxonomy($widget_type_names, $widget_type_options);
-

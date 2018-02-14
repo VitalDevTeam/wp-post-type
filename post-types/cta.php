@@ -10,8 +10,9 @@
 
 $cta_names = [
     'name'     => 'vtl_cta',
-    'singular' => 'CTA',
-    'plural'   => 'CTAs',
+    'singular' => 'Call to Action',
+    'plural'   => 'Calls to Action',
+	'all_items' => 'All Calls to Action',
     'slug'     => 'cta'
 ];
 
