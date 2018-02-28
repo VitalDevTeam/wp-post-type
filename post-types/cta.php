@@ -9,10 +9,11 @@
  */
 
 $cta_names = [
-    'name'     => 'vtl_cta',
-    'singular' => 'Call to Action',
-    'plural'   => 'Calls to Action',
-	'all_items' => 'All Calls to Action',
+	'name'     => 'vtl_cta',
+    'singular' => 'CTA',
+    'plural'   => 'CTA',
+	'all_items' => 'All CTAs',
+	'menu_name' => 'CTAs',
     'slug'     => 'cta'
 ];
 
