@@ -40,7 +40,15 @@ $widget->placeholder('Enter widget name');
 // Hide admin columns
 $widget->columns()->hide(['date', 'wpseo-score', 'wpseo-score-readability']);
 
-// Add custom admin columns
+// Set all columns
+$widget->columns()->set([
+	'cb'          => '<input type="checkbox" />',
+	'feat_img'    => 'Thumb',
+	'title'       => __('Title'),
+	'widget_type' => __('Group'),
+]);
+
+// Add custom admin columns to default array
 $widget->columns()->add([
     'widget_color' => 'Color'
 ]);
@@ -48,6 +56,18 @@ $widget->columns()->add([
 // Populate custom admin columns
 $widget->columns()->populate('widget_color', function($column, $post_id) {
     echo get_post_meta($post_id, 'widget_color');
+});
+
+// Add CSS to style columns
+add_action('admin_head', function() {
+	$screen = get_current_screen();
+	if ($screen && ($screen->base === 'edit') && ($screen->id === 'edit-vtl_widget')) {
+		echo '<style>
+		th[id=feat_img] {
+			width: 42px;
+		}
+		</style>';
+	}
 });
 
 // Make custom admin columns sortable
