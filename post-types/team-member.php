@@ -43,8 +43,19 @@ $team->columns()->set([
 
 $team->columns()->populate('team_member_photo', function($column, $post_id) {
 	$edit_post_link = get_edit_post_link($post_id);
-	$thumb = get_the_post_thumbnail($post_id, 'thumbnail', array('style' => 'width: 32px; height: 32px;'));
-	echo "<a href='{$edit_post_link}'>{$thumb}</a>";
+
+	if ($thumb = get_the_post_thumbnail($post_id, 'thumbnail', array('style' => 'width: 32px; height: 32px;'))) {
+		$img = $thumb;
+	} else {
+		$default = get_avatar_data(2, [
+			'size'          => 64,
+			'force_default' => true,
+		]);
+
+		$img = sprintf('<img src="%s" style="width: 32px; height: 32px;">', $default['url']);
+	}
+
+	printf('<a href="%s">%s</a>', $edit_post_link, $img);
 });
 
 add_action('admin_head', function() {
