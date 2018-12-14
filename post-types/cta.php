@@ -33,7 +33,7 @@ $cta = new PostType($cta_names, $cta_options);
 
 $cta->icon('dashicons-welcome-widgets-menus');
 $cta->placeholder('Enter description');
-$cta->columns()->hide(['date', 'wpseo-score', 'wpseo-score-readability']);
+$cta->columns()->hide(['wpseo-score', 'wpseo-score-readability']);
 
 $cta_style_names = [
     'name'     => 'cta_style',

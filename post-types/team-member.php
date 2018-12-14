@@ -32,7 +32,7 @@ $team->icon('dashicons-groups');
 
 $team->placeholder('Enter name');
 
-$team->columns()->hide(['date', 'wpseo-score', 'wpseo-score-readability']);
+$team->columns()->hide(['wpseo-score', 'wpseo-score-readability']);
 
 $team->columns()->set([
 	'cb'                => '<input type="checkbox" />',

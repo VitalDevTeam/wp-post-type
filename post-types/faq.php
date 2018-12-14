@@ -27,7 +27,7 @@ $faq = new PostType($faq_names, $faq_options);
 
 $faq->icon('dashicons-editor-help');
 $faq->placeholder('Enter question here');
-$faq->columns()->hide(['date', 'wpseo-score', 'wpseo-score-readability']);
+$faq->columns()->hide(['wpseo-score', 'wpseo-score-readability']);
 
 $faq_type_names = [
     'name'     => 'faq_category',

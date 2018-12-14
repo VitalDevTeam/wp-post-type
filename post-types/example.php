@@ -38,7 +38,7 @@ $widget->icon('dashicons-star-filled');
 $widget->placeholder('Enter widget name');
 
 // Hide admin columns
-$widget->columns()->hide(['date', 'wpseo-score', 'wpseo-score-readability']);
+$widget->columns()->hide(['wpseo-score', 'wpseo-score-readability']);
 
 // Set all columns
 $widget->columns()->set([
