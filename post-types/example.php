@@ -25,7 +25,7 @@ $widget_options = [
 	'show_in_nav_menus'   => true,
 	'show_in_rest'        => false,
 	'show_ui'             => true,
-	'supports'            => array('title'),
+	'supports'            => array('title', 'page-attributes'),
 ];
 
 // Create post type
