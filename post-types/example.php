@@ -5,12 +5,16 @@
 
 // Define our post type names
 $widget_names = [
-	'name'      => 'vtl_widget',
-	'menu_name' => 'Widgets',
-	'singular'  => 'Widget',
-	'plural'    => 'Widgets',
-	'all_items' => 'All Widgets',
-	'slug'      => 'widget',
+	'name'                  => 'vtl_widget',
+	'menu_name'             => 'Widgets',
+	'singular'              => 'Widget',
+	'plural'                => 'Widgets',
+	'all_items'             => 'All Widgets',
+	'slug'                  => 'widget',
+	'featured_image'        => 'Widget Diagram',
+	'set_featured_image'    => 'Set widget diagram',
+	'remove_featured_image' => 'Remove widget diagram',
+	'use_featured_image'    => 'Use as widget diagram',
 ];
 
 // Define our options

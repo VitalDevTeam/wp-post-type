@@ -56,6 +56,34 @@ class PostType
     public $all_items;
 
     /**
+     * The string for the featured image name.
+     *
+     * @var string
+     */
+    public $featured_image;
+
+    /**
+     * The string for the set featured image text.
+     *
+     * @var string
+     */
+    public $set_featured_image;
+
+    /**
+     * The string for the remove featured image text.
+     *
+     * @var string
+     */
+    public $remove_featured_image;
+
+    /**
+     * The string for the use featured image text.
+     *
+     * @var string
+     */
+    public $use_featured_image;
+
+    /**
      * The options passed for the post type.
      *
      * @var array
@@ -155,6 +183,10 @@ class PostType
             'plural',
             'all_items',
 			'menu_name',
+			'featured_image',
+			'set_featured_image',
+			'remove_featured_image',
+			'use_featured_image',
             'slug',
         ];
 
@@ -210,6 +242,10 @@ class PostType
             'not_found' => sprintf(__('No %s found', $this->textdomain), strtolower($this->plural)),
             'not_found_in_trash' => sprintf(__('No %s found in Trash', $this->textdomain), strtolower($this->plural)),
             'parent_item_colon' => sprintf(__('Parent %s:', $this->textdomain), $this->singular),
+            'featured_image' => sprintf(__('%s', $this->textdomain), $this->featured_image),
+            'set_featured_image' => sprintf(__('%s', $this->textdomain), $this->set_featured_image),
+            'remove_featured_image' => sprintf(__('%s', $this->textdomain), $this->remove_featured_image),
+            'use_featured_image' => sprintf(__('%s', $this->textdomain), $this->use_featured_image),
         ];
 
         // default options.
@@ -350,7 +386,7 @@ class PostType
 				return $this->placeholder;
 			});
 		}
-		
+
     }
 
     /**
