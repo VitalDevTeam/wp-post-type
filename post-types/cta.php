@@ -88,7 +88,7 @@ class CTA_Style_Radio_Metabox {
 		$taxonomy = self::$taxonomy;
 		$tax = get_taxonomy($taxonomy);
 		$terms = get_terms($taxonomy, ['hide_empty' => 0]);
-       		$name = 'tax_input[' . $taxonomy . '][]';
+		$name = 'tax_input[' . $taxonomy . '][]';
 		$postterms = get_the_terms($post->ID, $taxonomy);
 		$current = ($postterms ? array_pop($postterms) : false);
 		$current = ($current ? $current->term_id : 0);
