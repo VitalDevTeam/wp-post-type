@@ -1,6 +1,8 @@
 <?php
 /**
- * Example post type
+ * Example
+ *
+ * DO NOT USE AS-IS! Edit components you need and REMOVE components you don't.
  */
 
 // Define our post type names
@@ -23,13 +25,13 @@ $widget_options = [
 	'hierarchical'        => false,
 	'menu_position'       => 20,
 	'has_archive'         => true,
-	'rewrite'             => array('with_front' => false),
+	'rewrite'             => ['with_front' => false],
 	'show_in_admin_bar'   => true,
 	'show_in_menu'        => true,
 	'show_in_nav_menus'   => true,
 	'show_in_rest'        => false,
 	'show_ui'             => true,
-	'supports'            => array('title', 'page-attributes'),
+	'supports'            => ['title', 'page-attributes'],
 ];
 
 // Create post type
@@ -76,7 +78,7 @@ add_action('admin_head', function() {
 
 // Make custom admin columns sortable
 $widget->columns()->sortable([
-	'widget_color' => ['widget_color', true]
+	'widget_color' => ['widget_color', true],
 ]);
 
 // Define taxonomy names
@@ -90,7 +92,7 @@ $widget_type_names = [
 // Define taxonomy options
 $widget_type_options = [
 	'heirarchical'      => true,
-	'labels'            => array('menu_name' => 'Types'),
+	'labels'            => ['menu_name' => 'Types'],
 	'show_admin_column' => true,
 	'show_in_nav_menus' => false,
 	'show_in_rest'      => true,

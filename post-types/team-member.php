@@ -1,6 +1,6 @@
 <?php
 /**
- * Team Member post type
+ * Team Member
  */
 
 $team_names = [
@@ -17,13 +17,13 @@ $team_options = [
 	'hierarchical'        => false,
 	'menu_position'       => 20,
 	'has_archive'         => false,
-	'rewrite'             => array('with_front' => false),
+	'rewrite'             => ['with_front' => false],
 	'show_in_admin_bar'   => true,
 	'show_in_menu'        => true,
 	'show_in_nav_menus'   => false,
 	'show_in_rest'        => false,
 	'show_ui'             => true,
-	'supports'            => array('title', 'thumbnail'),
+	'supports'            => ['title', 'thumbnail'],
 ];
 
 $team = new PostType($team_names, $team_options);
@@ -44,7 +44,7 @@ $team->columns()->set([
 $team->columns()->populate('team_member_photo', function($column, $post_id) {
 	$edit_post_link = get_edit_post_link($post_id);
 
-	if ($thumb = get_the_post_thumbnail($post_id, 'thumbnail', array('style' => 'width: 32px; height: 32px;'))) {
+	if ($thumb = get_the_post_thumbnail($post_id, 'thumbnail', ['style' => 'width: 32px; height: 32px;'])) {
 		$img = $thumb;
 	} else {
 		$default = get_avatar_data(2, [
