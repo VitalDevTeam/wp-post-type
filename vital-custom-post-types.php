@@ -18,7 +18,10 @@ require plugin_dir_path(__FILE__) . '/inc/class-CPT.php';
 require plugin_dir_path(__FILE__) . '/inc/class-Vital-CPT.php';
 
 // Include post type(s)
+require plugin_dir_path(__FILE__) . '/post-types/faq.php';
+//require plugin_dir_path(__FILE__) . '/post-types/job.php';
 require plugin_dir_path(__FILE__) . '/post-types/resource.php';
+//require plugin_dir_path(__FILE__) . '/post-types/team-member.php';
 
 // @TODO: Add options page in wp-admin so each post type can
 //        be activated/deactivated easily

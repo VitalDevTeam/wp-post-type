@@ -16,10 +16,11 @@ class Resource extends \Vital\Custom_Post_Type {
 	/** @var array */
 	static $options = [
 		'has_archive'        => 'resources',
-		'public'             => false,
+		'public'             => true,
 		'publicly_queryable' => true,
 		'show_ui'            => true,
 		'show_in_rest'       => true,
+		'menu_position'      => 20,
 		'menu_icon'          => 'dashicons-media-document',
 		'supports'           => [
 			'title',
@@ -680,30 +681,9 @@ class Resource extends \Vital\Custom_Post_Type {
 		return $classes;
 	}
 
-	/**
-	 * inject our admin columns in a better order in the columns
-	 *
-	 * @param array $columns
-	 * @return array
-	 */
-	public static function column_order($columns) {
-		$n_columns = [];
-		$insertion_point = 'title';
-		foreach ($columns as $key => $value) {
-			$n_columns[$key] = $value;
-			if ($key == $insertion_point) {
-				foreach (self::$admin_columns as $new_col_key => $new_col_name) {
-					$n_columns[$new_col_key] = $new_col_name;
-				}
-			}
-		}
-		return $n_columns;
-	}
 
 	static function initialize() {
 		parent::initialize();
-
-		add_filter('manage_resource_posts_columns', [__CLASS__, 'column_order'], PHP_INT_MAX);
 
 		// related transients
 		add_action('save_post', [__CLASS__, 'delete_related_resources_transients']);

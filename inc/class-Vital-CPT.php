@@ -33,6 +33,9 @@ abstract class Custom_Post_Type {
 	/** @var */
 	static $admin_columns = [];
 
+	/** @var */
+	static $admin_columns_to_remove = [];
+
 	protected static function get_field_group() {
 		return array_merge(static::$field_group, [
 			'location' => [
@@ -64,6 +67,52 @@ abstract class Custom_Post_Type {
 		return $ret;
 	}
 
+
+
+	/**
+	 * inject our admin columns in a better order in the columns
+	 *
+	 * @param array $columns
+	 * @return array
+	 */
+	public static function reorder_admin_listing_columns($columns) {
+		if (!static::$admin_columns || !is_iterable(static::$admin_columns)) {
+			return $columns;
+		}
+
+		$n_columns = [];
+		$insertion_point = 'title';
+		foreach ($columns as $key => $value) {
+			$n_columns[$key] = $value;
+			if ($key == $insertion_point) {
+				foreach (static::$admin_columns as $new_col_key => $new_col_name) {
+					$n_columns[$new_col_key] = $new_col_name;
+				}
+			}
+		}
+
+		return $n_columns;
+	}
+
+	/**
+	 * manage's the admin columns for this posttype
+	 *
+	 * @param array $columns
+	 * @return array
+	 */
+	static function remove_unneeded_columns($columns) {
+		if (!static::$admin_columns_to_remove || !is_iterable(static::$admin_columns_to_remove)) {
+			return $columns;
+		}
+		foreach (static::$admin_columns_to_remove as $column_to_remove) {
+			if (isset($columns[$column_to_remove])) {
+				unset($columns[$column_to_remove]);
+			}
+		}
+
+		return $columns;
+	}
+
 	static function initialize() {
 		$class = get_called_class();
 
@@ -82,18 +131,34 @@ abstract class Custom_Post_Type {
 			'hierarchical' => true,
 		];
 
+		// add our taxonomies
 		foreach (static::$taxonomies as $tax=>$tax_opts) {
 			$cpt->register_taxonomy($tax, array_merge($base_tax_opts, $tax_opts));
 		}
 
+		// add our listing columns
 		$cpt->columns(array_merge(static::$base_admin_columns, static::$admin_columns));
-
+		// add any necessary logic for populating our listing columns
 		foreach (static::$admin_columns as $col=>$col_title) {
 			$callback = sprintf('admin_column_%s', $col);
 			if (method_exists($class, $callback)) {
 				$cpt->populate_column($col, [$class, $callback]);
 			}
 		}
+
+		// remove any undesirable admin columns
+		add_filter(
+			sprintf('manage_resource_posts_columns', static::$name),
+			[$class, 'remove_unneeded_columns'],
+			PHP_INT_MAX - 1
+		);
+
+		// reorder the columns
+		add_filter(
+			sprintf('manage_%s_posts_columns', static::$name),
+			[$class, 'reorder_admin_listing_columns'],
+			PHP_INT_MAX
+		);
 
 		static::$_cpt_instance = $cpt;
 		add_action('acf/init', [$class, 'add_field_group']);
@@ -115,6 +180,11 @@ abstract class Custom_Post_Type {
 		acf_add_local_field_group(static::get_field_group());
 	}
 
+	/**
+	 * adds an options page using the singular label for the menu item
+	 *
+	 * @return void
+	 */
 	static function add_options_page() {
 		$type = 'Post';
 		if (isset(static::$labels['singular'])) {

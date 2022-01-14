@@ -1,44 +1,79 @@
 <?php
-/**
- * FAQ
- */
+namespace USD\Posttypes;
 
-$faq_names = [
-	'name'      => 'vtl_faq',
-	'menu_name' => 'FAQs',
-	'singular'  => 'Question',
-	'plural'    => 'Questions',
-	'all_items' => 'All Questions',
-	'slug'      => 'faq',
-];
+class FAQ extends \Vital\Custom_Post_Type {
+	/** @var string */
+	static $name = 'faq';
 
-$faq_options = [
-	'has_archive'       => true,
-	'hierarchical'      => false,
-	'labels'            => ['menu_name' => 'FAQs'],
-	'menu_position'     => 21,
-	'rewrite'           => ['with_front' => false],
-	'show_in_nav_menus' => false,
-	'show_in_rest'      => false,
-	'supports'          => ['title', 'editor'],
-];
+	/** @var string */
+	static $placeholder_text = 'Enter question here';
 
-$faq = new PostType($faq_names, $faq_options);
+	/** @var array */
+	static $labels = [
+		'menu_name' => 'FAQs',
+		'singular'  => 'Question',
+		'plural'    => 'Questions',
+		'all_items' => 'All Questions',
+	];
 
-$faq->icon('dashicons-editor-help');
-$faq->placeholder('Enter question here');
-$faq->columns()->hide(['wpseo-score', 'wpseo-score-readability']);
 
-$faq_type_names = [
-	'name'     => 'faq_category',
-	'singular' => 'FAQ Category',
-	'plural'   => 'FAQ Categories',
-	'slug'     => 'faq-category',
-];
+	/** @var array */
+	static $options = [
+		'has_archive'       => 'faqs',
+		'public'            => false,
+		'show_ui'           => true,
+		'show_in_rest'      => false,
+		'show_in_nav_menus' => false,
+		'hierarchical'      => false,
+		'menu_position'     => 20,
+		'menu_icon'         => 'dashicons-editor-help',
+		'rewrite'           => [
+			'slug'       => 'faq',
+			'with_front' => false,
+		],
+		'supports'          => [
+			'title',
+			'custom-fields',
+			'editor',
+		],
+	];
 
-$faq_type_options = [
-	'heirarchical'      => true,
-	'show_in_nav_menus' => false,
-];
+	/** @var array */
+	static $taxonomies = [
+		'faq_category' => [
+			'heirarchical'      => true,
+			'show_in_nav_menus' => false,
+			'labels'            => [
+				'name'              => 'FAQ Categories',
+				'singular'          => 'FAQ Category',
+				'plural'            => 'FAQ Categories',
+				'menu_name'         => 'FAQ Categories',
+				'add_new_item'      => 'Add FAQ Category',
+				'not_found'         => 'No FAQ Categories Found',
+				'parent_item'       => 'Parent FAQ Categories',
+				'parent_item_colon' => 'Parent FAQ Categories:',
+			],
+			'rewrite'           => [
+				'slug'       => 'faq-category',
+				'with_front' => true,
+			],
+		],
+	];
 
-$faq->taxonomy($faq_type_names, $faq_type_options);
+	/** @var array */
+	static $admin_columns = [
+		'faq_category' => 'Categories',
+	];
+
+	/** @var array */
+	static $admin_columns_to_remove = ['wpseo-score', 'wpseo-score-readability'];
+
+
+	static function initialize() {
+		parent::initialize();
+
+		add_filter('manage_resource_posts_columns', [__CLASS__, 'remove_unneeded_columns'], PHP_INT_MAX - 1);
+	}
+}
+
+add_action('after_setup_theme', ['\\USD\\Posttypes\\FAQ', 'initialize']);
