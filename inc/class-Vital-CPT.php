@@ -130,7 +130,7 @@ abstract class Custom_Post_Type {
 			static::$options_field_group,
 			$options_post_id,
 			$options_parent_slug,
-			self::$options_capability
+			static::$options_capability
 		);
 	}
 }
