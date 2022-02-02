@@ -72,7 +72,6 @@ class FAQ extends \Vital\Custom_Post_Type {
 	static function initialize() {
 		parent::initialize();
 
-		add_filter('manage_resource_posts_columns', [__CLASS__, 'remove_unneeded_columns'], PHP_INT_MAX - 1);
 	}
 }
 
