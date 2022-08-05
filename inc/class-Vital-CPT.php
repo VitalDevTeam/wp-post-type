@@ -148,7 +148,7 @@ abstract class Custom_Post_Type {
 
 		// remove any undesirable admin columns
 		add_filter(
-			sprintf('manage_resource_posts_columns', static::$name),
+			sprintf('manage_%s_posts_columns', static::$name),
 			[$class, 'remove_unneeded_columns'],
 			PHP_INT_MAX - 1
 		);
