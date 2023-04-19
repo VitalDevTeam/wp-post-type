@@ -31,6 +31,7 @@ class FAQ extends \Vital\Custom_Post_Type {
 			'slug'       => 'faq',
 			'with_front' => false,
 		],
+		'capability_type'   => 'faq',
 		'supports'          => [
 			'title',
 			'custom-fields',

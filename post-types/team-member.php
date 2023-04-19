@@ -23,6 +23,7 @@ $team_options = [
 	'show_in_nav_menus'   => false,
 	'show_in_rest'        => false,
 	'show_ui'             => true,
+	'capability_type'     => 'team-member',
 	'supports'            => ['title', 'thumbnail'],
 ];
 

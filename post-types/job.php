@@ -19,6 +19,7 @@ $job_options = [
 	'rewrite'           => ['with_front' => false],
 	'show_in_nav_menus' => true,
 	'show_in_rest'      => false,
+	'capability_type'   => 'careers',
 	'supports'          => ['title'],
 ];
 

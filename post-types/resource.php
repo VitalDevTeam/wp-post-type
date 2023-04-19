@@ -22,6 +22,7 @@ class Resource extends \Vital\Custom_Post_Type {
 		'show_in_rest'       => true,
 		'menu_position'      => 20,
 		'menu_icon'          => 'dashicons-media-document',
+		'capability_type'    => 'resource',
 		'supports'           => [
 			'title',
 			'custom-fields',
