@@ -1,5 +1,5 @@
 <?php
-namespace USD\Posttypes;
+namespace Projectname\Posttypes;
 
 class Resource extends \Vital\Custom_Post_Type {
 	/** @var string */
