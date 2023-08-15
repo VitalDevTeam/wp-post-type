@@ -143,7 +143,8 @@ abstract class Custom_Post_Type {
 		];
 
 		// add our taxonomies
-		foreach (static::$taxonomies as $tax=>$tax_opts) {
+		$taxonomies = \apply_filters('vital_cpt_register_taxonomies', static::$taxonomies, static::$name);
+		foreach ($taxonomies as $tax=>$tax_opts) {
 			$cpt->register_taxonomy($tax, array_merge($base_tax_opts, $tax_opts));
 		}
 
