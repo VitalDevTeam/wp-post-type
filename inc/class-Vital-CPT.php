@@ -51,6 +51,16 @@ abstract class Custom_Post_Type {
 	}
 
 	/**
+	 * helper function to retrieve
+	 * admin_columns while hooking into `vital_cpt_admin_columns`
+	 *
+	 * @return array
+	 */
+	static function get_admin_columns() {
+		return \apply_filters('vital_cpt_admin_columns', static::$admin_columns, static::$name);
+	}
+
+	/**
 	 * populates the placeholder text
 	 * if the placeholder_text property is not set
 	 * the text is built using the name of the posttype
@@ -76,7 +86,8 @@ abstract class Custom_Post_Type {
 	 * @return array
 	 */
 	public static function reorder_admin_listing_columns($columns) {
-		if (!static::$admin_columns || !is_iterable(static::$admin_columns)) {
+		$admin_columns = static::get_admin_columns();
+		if (!$admin_columns || !is_iterable($admin_columns)) {
 			return $columns;
 		}
 
@@ -84,8 +95,8 @@ abstract class Custom_Post_Type {
 		$insertion_point = 'title';
 		foreach ($columns as $key => $value) {
 			$n_columns[$key] = $value;
-			if ($key == $insertion_point) {
-				foreach (static::$admin_columns as $new_col_key => $new_col_name) {
+			if ($key === $insertion_point) {
+				foreach ($admin_columns as $new_col_key => $new_col_name) {
 					$n_columns[$new_col_key] = $new_col_name;
 				}
 			}
@@ -137,9 +148,10 @@ abstract class Custom_Post_Type {
 		}
 
 		// add our listing columns
-		$cpt->columns(array_merge(static::$base_admin_columns, static::$admin_columns));
+		$admin_columns = static::get_admin_columns();
+		$cpt->columns(array_merge(static::$base_admin_columns, $admin_columns));
 		// add any necessary logic for populating our listing columns
-		foreach (static::$admin_columns as $col=>$col_title) {
+		foreach ($admin_columns as $col=>$col_title) {
 			$callback = sprintf('admin_column_%s', $col);
 			if (method_exists($class, $callback)) {
 				$cpt->populate_column($col, [$class, $callback]);
