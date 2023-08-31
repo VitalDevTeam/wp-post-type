@@ -1,5 +1,5 @@
 <?php
-namespace Projectname\Posttypes;
+namespace Vital\Posttypes;
 
 class Resource extends \Vital\Custom_Post_Type {
 	/** @var string */
@@ -725,4 +725,4 @@ class Resource extends \Vital\Custom_Post_Type {
 	}
 }
 
-add_action('after_setup_theme', ['\\USD\\Posttypes\\Resource', 'initialize']);
+add_action('after_setup_theme', ['\\Vital\\Posttypes\\Resource', 'initialize']);

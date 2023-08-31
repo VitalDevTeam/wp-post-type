@@ -1,5 +1,5 @@
 <?php
-namespace Projectname\Posttypes;
+namespace Vital\Posttypes;
 
 class FAQ extends \Vital\Custom_Post_Type {
 	/** @var string */
@@ -75,4 +75,4 @@ class FAQ extends \Vital\Custom_Post_Type {
 	}
 }
 
-add_action('after_setup_theme', ['\\USD\\Posttypes\\FAQ', 'initialize']);
+add_action('after_setup_theme', ['\\Vital\\Posttypes\\FAQ', 'initialize']);
