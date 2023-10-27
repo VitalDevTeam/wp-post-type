@@ -518,6 +518,9 @@ class CPT {
             'add_or_remove_items'        => sprintf( __( 'Add or remove %s', $this->textdomain ), $plural ),
             'choose_from_most_used'      => sprintf( __( 'Choose from most used %s', $this->textdomain ), $plural ),
             'not_found'                  => sprintf( __( 'No %s found', $this->textdomain ), $plural ),
+			'back_to_items'              => sprintf( __( '&larr; Go to %s', $this->textdomain ), $plural ),
+			'items_list'                 => sprintf( __( '%s list', $this->textdomain ), $plural),
+			'items_list_navigation'      => sprintf( __( '%s list navigation', $this->textdomain ), $plural),
         );
 
         // Default options.
