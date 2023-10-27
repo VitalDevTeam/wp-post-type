@@ -396,25 +396,32 @@ class CPT {
 
         // Default labels.
         $labels = array(
-            'name'               => sprintf( __( '%s', $this->textdomain ), $plural ),
-            'singular_name'      => sprintf( __( '%s', $this->textdomain ), $singular ),
-            'menu_name'          => sprintf( __( '%s', $this->textdomain ), $plural ),
-            'all_items'          => sprintf( __( '%s', $this->textdomain ), $plural ),
-            'add_new'            => __( 'Add New', $this->textdomain ),
-            'add_new_item'       => sprintf( __( 'Add New %s', $this->textdomain ), $singular ),
-            'edit_item'          => sprintf( __( 'Edit %s', $this->textdomain ), $singular ),
-            'new_item'           => sprintf( __( 'New %s', $this->textdomain ), $singular ),
-            'view_item'          => sprintf( __( 'View %s', $this->textdomain ), $singular ),
-            'search_items'       => sprintf( __( 'Search %s', $this->textdomain ), $plural ),
-            'not_found'          => sprintf( __( 'No %s found', $this->textdomain ), $plural ),
-            'not_found_in_trash' => sprintf( __( 'No %s found in Trash', $this->textdomain ), $plural ),
-            'parent_item_colon'  => sprintf( __( 'Parent %s:', $this->textdomain ), $singular )
+            'name'                     => sprintf( __( '%s', $this->textdomain ), $plural ),
+            'singular_name'            => sprintf( __( '%s', $this->textdomain ), $singular ),
+            'menu_name'                => sprintf( __( '%s', $this->textdomain ), $plural ),
+            'all_items'                => sprintf( __( '%s', $this->textdomain ), $plural ),
+            'add_new'                  => __( 'Add New', $this->textdomain ),
+            'add_new_item'             => sprintf( __( 'Add New %s', $this->textdomain ), $singular ),
+            'edit_item'                => sprintf( __( 'Edit %s', $this->textdomain ), $singular ),
+            'new_item'                 => sprintf( __( 'New %s', $this->textdomain ), $singular ),
+            'view_item'                => sprintf( __( 'View %s', $this->textdomain ), $singular ),
+            'view_items'               => sprintf( __( 'View %s', $this->textdomain ), $plural ),
+            'search_items'             => sprintf( __( 'Search %s', $this->textdomain ), $plural ),
+            'not_found'                => sprintf( __( 'No %s found', $this->textdomain ), $plural ),
+            'not_found_in_trash'       => sprintf( __( 'No %s found in Trash', $this->textdomain ), $plural ),
+            'parent_item_colon'        => sprintf( __( 'Parent %s:', $this->textdomain ), $singular ),
+            'item_trashed'             => sprintf( __( '%s trashed', $this->textdomain ), $singular ),
+            'item_updated'             => sprintf( __( '%s updated', $this->textdomain ), $singular ),
+            'item_scheduled'           => sprintf( __( '%s scheduled', $this->textdomain ), $singular ),
+            'item_published'           => sprintf( __( '%s published', $this->textdomain ), $singular ),
+            'item_published_privately' => sprintf( __( '%s published privately', $this->textdomain ), $singular ),
+            'item_reverted_to_draft'   => sprintf( __( '%s reverted to draft', $this->textdomain ), $singular ),
         );
 
         // Default options.
         $defaults = array(
-            'labels' => $labels,
-            'public' => true,
+            'labels'  => $labels,
+            'public'  => true,
             'rewrite' => array(
                 'slug' => $slug,
             )
