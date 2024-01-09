@@ -8,8 +8,8 @@
 	Author URI: http://vtldesign.com
 	License: GPLv2
 
-	Uses PostTypes PHP class for creating post types by Joe Grainger
-	https://github.com/jjgrainger/PostTypes
+	Uses Custom Post Type PHP class for creating post types by Joe Grainger
+	https://github.com/jjgrainger/wp-custom-post-type-class
 */
 
 defined('ABSPATH') or die('Do not access this file directly.');

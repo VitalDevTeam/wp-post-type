@@ -1,6 +1,6 @@
 # WordPress Custom Post Types Plugin
 
-Custom post type class for easy creation. Based on JJGrainger's PHP class: http://jjgrainger.co.uk/2013/07/15/easy-wordpress-custom-post-types/
+Custom post type class for easy creation. Based on JJGrainger's PHP class: https://jjgrainger.co.uk/2013/07/15/easy-wordpress-custom-post-types/
 
 ## Installation
 
@@ -8,29 +8,28 @@ Custom post type class for easy creation. Based on JJGrainger's PHP class: http:
 2. Create a new file for each post type in `post-types` directory.
 3. `require` each post type file in `custom-post-types.php`
 
-_Coming soon: A wp-admin options page that will let you activate/deactivate individual post types without having to manually edit `custom-post-types.php`._
-
 ## How to Use
 
 Check out `post-types/example.php` for an example.
 
-### Post Type Names
-
-    $widget_names = [
-        'name' => 'vtl_widget',
-        'singular' => 'Widget',
-        'plural' => 'Widgets',
-        'slug' => 'widget'
-    ];
+### Post Type Name
+	static $name = 'vtl_widget';
 
 * `name` – Post type name (required, singular, lowercase, underscores). It's recommended to prefix this value to prevent collisions.
+
+### Post Type Labels
+
+    static $labels = [
+        'singular' => 'Widget',
+        'plural'   => 'Widgets',
+    ];
+
 * `singular` – Name for one object of this post type.
 * `plural` – Name for two or more objects of this post type.
-* `slug` – The URL base for this post type.
 
 ### Post Type Options
 
-    $widget_options = [
+    static $options = [
         'supports'            => array('title'),
         'hierarchical'        => false,
         'menu_position'       => 20,
@@ -45,78 +44,79 @@ Check out `post-types/example.php` for an example.
 
 ### Create Post Type
 
-    $widgets = new PostType($widget_names, $widget_options);
+    add_action('after_setup_theme', ['\\Vital\\Posttypes\\Example', 'initialize']);
+
+This will call the parent class's `initialize` function which will handle all the dirty work.
 
 ### Set Menu Icon
 Carefully choose your perfect [Dashicon →](https://developer.wordpress.org/resource/dashicons)
 
-    $widgets->icon('dashicons-star-filled');
+The slug of the dashicon should be set to the `$options` `menu-icon` item.
+
+    $options['menu-icon] = 'dashicons-star-filled';
 
 ### Change Title Placeholder Text (Optional)
 Changes the placeholder text in the title field on the post editor.
 
-    $widgets->placeholder('Enter widget name here');
+    static $placeholder_text = 'Enter widget name here';
 
 ### Customize Admin Columns
 #### Adding Columns
 ##### Create column
 
-    $widgets->columns()->add([
+    static $admin_columns = [
         'custom_meta' => 'Custom Meta'
-    ]);
+    ];
+
+The admin_columns property on the class is an array of `key` & `value` pairs where the `key` represents the slug of the column and the `value` is the label to display for the column.
 
 ##### Populate column with content
 
-    $widgets->columns()->populate('type', function($column, $post_id) {
-        echo get_post_meta($post_id, 'custom_meta');
-    });
+	static $admin_columns = [
+		'widget_category' => 'Widget Categories',
+		'is_locked'       => 'Is Locked?'
+	];
+	public static function admin_column_is_locked($column, $post) {
+		$value = get_post_meta($post->ID, 'is_locked', true);
+		echo $value === 1 ? 'Yes' : 'No';
+	}
 
-##### Make column sortable
+If the column `key` represents a slug for an associated taxonomy, the values will be pre-populated by the extended class and there is no other logic needed for those columns unless desired.
 
-    $widgets->columns()->sortable([
-        'custom_meta' => ['custom_meta', true]
-    ]);
+In the example above, `widget_category` is for a taxonomy and will NOT require any futher logic to display the basic column content. The `is_locked` column requires additional logic to populate it's content. The extended class creates a scaffold for populating that content. Just create a function called `admin_column_[column-slug]` where `[column-slug]` is the array key of the column as defined in `$admin_columns` and have that function echo out the desired content.
 
-`true` = Sort numerically
-`false` = Sort alphabetically
 
 #### Hiding Columns
 
-    $widgets->columns()->hide(['date', 'author', 'wpseo-score', 'wpseo-score-readability']);
+    static $admin_columns_to_remove = ['date', 'author', 'wpseo-score', 'wpseo-score-readability'];
+
+Add the column key to the array of columns to remove.
 
 ### Taxonomies
-#### Taxonomy Names
 
-    $widget_type_names = [
-        'name'     => 'widget_type',
-        'singular' => 'Type',
-        'plural'   => 'Types',
-        'slug'     => 'widget-type'
+    static $taxonomies = [
+		'widget_category' => [
+			'labels' => [
+				'name'              => 'Widget Categories',
+				'singular'          => 'Widget Category',
+				'plural'            => 'Widget Categories',
+				'menu_name'         => 'Widget Categories',
+				'add_new_item'      => 'Add Widget Category',
+				'not_found'         => 'No Widget Categories Found',
+				'parent_item'       => 'Parent Widget Categories',
+				'parent_item_colon' => 'Parent Widget Categories:',
+			]
+			'heirarchical'     => true,
+			'rewrite' => [
+				'slug'       => 'widget-category'
+				'with_front' => true,
+			]
+		],
+		'tags' => []
     ];
 
-* `name` – Taxonomy name (required, singular, lowercase, underscores).
-* `singular` – Singular name of taxonomy.
-* `plural` – Plural name of taxonomy.
-* `slug` – The URL base for taxonomy.
-
-#### Taxonomy Options
-
-    $widget_type_options = [
-        'heirarchical'      => true,
-        'show_admin_column' => true,
-        'show_in_nav_menus' => false
-    ];
+Taxonomies are associated with this posttype, by a key and value array of taxonomy settings. The key should be the slug of the taxonomy (singular, lowercase, using underscores). If this is a 'new' taxonomy, add an array of the configuration options for the taxonomy. If this is a pre-existing taxonomy, an empty array is all that is required for the options value.
 
 [All available options →](https://codex.wordpress.org/Function_Reference/register_taxonomy)
 
-#### Create Taxonomy
-
-    $widgets->taxonomy($widget_type_names, $widget_type_options);
-
-#### Add Admin Filters (Optional)
-Adds dropdown menus to admin list for filtering by taxonomy.
-
-    new Taxonomy_Filter(array($post_type => $taxonomies));
-
-* `$post_type` – Name of this post type.
-* `$taxonomies` – Array of taxonomy names. Each item will get its own dropdown.
+The extended class will create filter dropdowns for any taxonomies associated with this posttype.
