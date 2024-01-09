@@ -36,8 +36,17 @@ abstract class Custom_Post_Type {
 	/** @var */
 	static $admin_columns_to_remove = [];
 
+	/**
+	 * retrieves the field group definition
+	 * 
+	 * takes the static `$field_group` property and merges it with a 'location' setting for ACF
+	 * 
+	 * this hooks into `vital_cpt_field_group` to allow themes and other plugins to modify the field group as needed
+	 *
+	 * @return array
+	 */
 	protected static function get_field_group() {
-		return array_merge(static::$field_group, [
+		$field_group_definition = array_merge(static::$field_group, [
 			'location' => [
 				[
 					[
@@ -48,6 +57,10 @@ abstract class Custom_Post_Type {
 				],
 			],
 		]);
+
+		$field_group_definition = \apply_filters('vital_cpt_field_group', $field_group_definition, static::$name);
+		
+		return $field_group_definition;
 	}
 
 	/**
