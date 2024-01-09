@@ -3,7 +3,7 @@
 	Plugin Name: Custom Post Types
 	Plugin URI: http://vtldesign.com
 	Description: Registers all the custom post types for this site.
-	Version: 3.0.0
+	Version: 3.0.1
 	Author: Vital
 	Author URI: http://vtldesign.com
 	License: GPLv2
