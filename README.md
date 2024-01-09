@@ -1,6 +1,6 @@
 # WordPress Custom Post Types Plugin
 
-Custom post type class for easy creation. Based on JJGrainer's PHP class: http://jjgrainger.co.uk/2013/07/15/easy-wordpress-custom-post-types/
+Custom post type class for easy creation. Based on JJGrainger's PHP class: http://jjgrainger.co.uk/2013/07/15/easy-wordpress-custom-post-types/
 
 ## Installation
 
