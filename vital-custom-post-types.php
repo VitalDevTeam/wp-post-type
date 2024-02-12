@@ -3,7 +3,7 @@
 	Plugin Name: Custom Post Types
 	Plugin URI: http://vtldesign.com
 	Description: Registers all the custom post types for this site.
-	Version: 3.0.1
+	Version: 3.0.2
 	Author: Vital
 	Author URI: http://vtldesign.com
 	License: GPLv2
@@ -13,6 +13,14 @@
 */
 
 defined('ABSPATH') or die('Do not access this file directly.');
+
+require 'plugin-update-checker/plugin-update-checker.php';
+
+$update_checker = Puc_v4_Factory::buildUpdateChecker(
+	'https://github.com/VitalDevTeam/wp-post-type',
+	__FILE__,
+	'wp-post-type'
+);
 
 require plugin_dir_path(__FILE__) . '/inc/class-CPT.php';
 require plugin_dir_path(__FILE__) . '/inc/class-Vital-CPT.php';
