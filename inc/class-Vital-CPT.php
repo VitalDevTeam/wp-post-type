@@ -63,6 +63,10 @@ abstract class Custom_Post_Type {
 		return $field_group_definition;
 	}
 
+	protected static function get_options_field_group() {
+		return \apply_filters('vital_cpt_options_field_group', static::$options_field_group, static::$name);
+	}
+
 	/**
 	 * helper function to retrieve
 	 * admin_columns while hooking into `vital_cpt_admin_columns`
@@ -189,9 +193,7 @@ abstract class Custom_Post_Type {
 		static::$_cpt_instance = $cpt;
 		add_action('acf/init', [$class, 'add_field_group']);
 
-		if (static::$options_field_group) {
-			add_action('acf/init', [$class, 'add_options_page']);
-		}
+		add_action('acf/init', [$class, 'add_options_page']);
 
 		add_filter('enter_title_here', function($title, $post) use ($class) {
 			if ($post->post_type === static::$name) {
@@ -221,9 +223,14 @@ abstract class Custom_Post_Type {
 		$options_post_id = sprintf('%s-options', static::$name);
 		$options_parent_slug = sprintf('edit.php?post_type=%s', static::$name);
 
+		$field_group = static::get_options_field_group();
+		if (!$field_group) {
+			return;
+		}
+
 		SkeletorThemeOptions::add_skeletor_options_page(
 			$options_page_title,
-			static::$options_field_group,
+			$field_group,
 			$options_post_id,
 			$options_parent_slug,
 			static::$options_capability
