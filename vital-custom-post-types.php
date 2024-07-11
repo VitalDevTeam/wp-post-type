@@ -1,8 +1,7 @@
 <?php
 /*
 	Plugin Name: Custom Post Types
-	Plugin URI: https://vitaldesign.com
-	Description: Registers all the custom post types for this site.
+	Description: Adds programmatic tools for registering custom post types for this site.
 	Version: 3.0.2
 	Author: Vital
 	Author URI: https://vitaldesign.com
