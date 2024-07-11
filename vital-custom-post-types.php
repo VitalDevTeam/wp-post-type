@@ -1,11 +1,11 @@
 <?php
 /*
 	Plugin Name: Custom Post Types
-	Plugin URI: http://vtldesign.com
+	Plugin URI: https://vitaldesign.com
 	Description: Registers all the custom post types for this site.
 	Version: 3.0.2
 	Author: Vital
-	Author URI: http://vtldesign.com
+	Author URI: https://vitaldesign.com
 	License: GPLv2
 
 	Uses Custom Post Type PHP class for creating post types by Joe Grainger
