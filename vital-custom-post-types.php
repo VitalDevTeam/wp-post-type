@@ -2,7 +2,7 @@
 /*
 	Plugin Name: Custom Post Types
 	Description: Adds programmatic tools for registering custom post types for this site.
-	Version: 3.0.2
+	Version: 3.0.3
 	Author: Vital
 	Author URI: https://vitaldesign.com
 	License: GPLv2
